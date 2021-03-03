@@ -1,22 +1,21 @@
-# WORK ON THIS. Needs to handle formatted numbers.
-
 # Python 3.9.0
 
 # RadixToEFormat
 
 def RadixToEFormat(Radix, Base):
 
-    
+
     '''
     Function requirements:
     Programmer's module/s:
     1. BaseTenIntegerToBaseNInteger
+    2. FormatNumber
     Parameter requirements:
     Radix: must be a string Radix that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
-    
+
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
     Fraction = Radix[(IndexOfPoint + 1):]
@@ -35,6 +34,7 @@ def RadixToEFormat(Radix, Base):
                 Fraction = Fraction[Zeros]
             if Base != '10':
                 Exponent = I.BaseTenIntegerToBaseNInteger(Exponent, Base)
+            Fraction = I.FormatNumber(Fraction)
             EFormat = f'{Fraction}e-{Exponent}'
             return EFormat
     else: # Whole != '0'
@@ -53,6 +53,7 @@ def RadixToEFormat(Radix, Base):
                     Whole = Whole[0]
                 if Base != '10':
                     Exponent = I.BaseTenIntegerToBaseNInteger(Exponent, Base)
+                Whole = I.FormatNumber(Whole)
                 EFormat = f'{Whole}e+{Exponent}'
                 return EFormat
     return Radix
@@ -62,9 +63,11 @@ if __name__ == '__main__':
     import builtins
     # Programmer's module/s:
     from BaseTenIntegerToBaseNInteger import BaseTenIntegerToBaseNInteger
+    from FormatNumber import FormatNumber
     class I():
         RadixToEFormat = RadixToEFormat
         BaseTenIntegerToBaseNInteger = BaseTenIntegerToBaseNInteger
+        FormatNumber = FormatNumber
     builtins.I = I
     Radix = input('Enter Radix: ')
     Base = input('Enter Base: ')
