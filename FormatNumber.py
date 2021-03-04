@@ -4,13 +4,13 @@
 
 def FormatNumber(Number):
 
-    
+
     '''
     Parameter requirements:
     Number: must be a string number.
     '''
 
-    
+
     if '.' in Number:
         if Number[0] == '.':
             Number = f'0{Number}'
@@ -34,7 +34,7 @@ def FormatNumber(Number):
             Whole = ''
             for Digit in reversed(WorkingReversed):
                 Whole = f'{Whole}{Digit}'
-        # Fraction part. 
+        # Fraction part.
         if Fraction != '' or Fraction != '0':
             Zeros = ''
             for Digit in Fraction:
@@ -104,7 +104,7 @@ def FormatNumber(Number):
             Fraction = ''
             for Element in reversed(WorkingReversed):
                 Fraction = f'{Fraction}{Element}'
-        Number = f'{Whole}:{Fraction}'  
+        Number = f'{Whole}:{Fraction}'
     elif '|' in Number:
         Reversed = ''
         for Element in reversed(Number):
@@ -151,15 +151,3 @@ if __name__ == '__main__':
     Number = input('Enter Number: ')
     Number = I.FormatNumber(Number)
     print(Number)
-        
-        
-
-
-
-
-
-
-
-
-
-    

@@ -15,8 +15,8 @@ class Calculator:
         Y = int((SH - H) / 2)
         self.Window.geometry(f'{W}x{H}+{X}+{Y}')
         self.Window.minsize(width = W, height = H)
-        self.Window.bind('<Configure>', self.ResizeFont)             
-                         
+        self.Window.bind('<Configure>', self.ResizeFont)
+
         # VARIABLES
         self.Mode = 'Calculator'
         self.Base = '10'
@@ -125,7 +125,7 @@ class Calculator:
         self.FontSize = U.font.Font(size = str(self.BaseFontSize))
         self.Style = U.ttk.Style()
         self.Style.configure('TButton', font = self.FontSize)
-        
+
 
         # WIDGITS
         self.Frame = U.ttk.Frame(self.Window)
@@ -175,7 +175,7 @@ class Calculator:
         # ROW TWO
         self.BaseDisplayButton = U.ttk.Button(
             self.Frame,
-            text = self.Base, 
+            text = self.Base,
             state = 'disabled'
             )
         self.BaseDisplayButton.grid(
@@ -189,7 +189,7 @@ class Calculator:
 
         self.FractionDisplayButton = U.ttk.Button(
             self.Frame,
-            text = self.Fraction, 
+            text = self.Fraction,
             state = 'disabled'
             )
         self.FractionDisplayButton.grid(
@@ -198,9 +198,9 @@ class Calculator:
             sticky = 'wens'
             )
         self.Frame.columnconfigure(1, weight = 4)
-        self.Frame.rowconfigure(2, weight = 3) 
+        self.Frame.rowconfigure(2, weight = 3)
 
-        
+
         self.RoundRadixDisplayButton = U.ttk.Button(
             self.Frame,
             text = self.RoundRadix,
@@ -242,7 +242,7 @@ class Calculator:
         self.Frame.columnconfigure(9, weight = 4)
         self.Frame.rowconfigure(2, weight = 3)
 
-        
+
         # ROW THREE
         self.BaseButton = U.ttk.Button(
             self.Frame,
@@ -257,7 +257,7 @@ class Calculator:
         self.Frame.columnconfigure(0, weight = 4)
         self.Frame.rowconfigure(3, weight = 3)
 
-        
+
         self.FractionButton = U.ttk.Button(
             self.Frame,
             text = 'Fraction',
@@ -275,7 +275,7 @@ class Calculator:
         self.RoundRadixButton = U.ttk.Button(
             self.Frame,
             text = '(R)',
-            command = lambda: self.RoundRadixMethod() 
+            command = lambda: self.RoundRadixMethod()
             )
         self.RoundRadixButton.grid(
             column = 2,
@@ -298,7 +298,7 @@ class Calculator:
             )
         self.Frame.columnconfigure(3, weight = 4)
         self.Frame.rowconfigure(3, weight = 3)
-        
+
 
         # ROW FOUR
         self.RadToRadButton = U.ttk.Button(
@@ -447,7 +447,7 @@ class Calculator:
         # ROW SIX
         self.PiButton = U.ttk.Button(
             self.Frame,
-            text = 'π', 
+            text = 'π',
             command = lambda: self.PiMethod()
             )
         self.PiButton.grid(
@@ -559,7 +559,7 @@ class Calculator:
         self.Frame.rowconfigure(8, weight = 3)
 
 
-        self.GetPowerButton = U.ttk.Button( 
+        self.GetPowerButton = U.ttk.Button(
             self.Frame,
             text = '˄',
             command = lambda: self.InputCharacter(' ˄ ')
@@ -573,7 +573,7 @@ class Calculator:
         self.Frame.rowconfigure(8, weight = 3)
 
 
-        self.GetRootButton = U.ttk.Button( 
+        self.GetRootButton = U.ttk.Button(
             self.Frame,
             text = '˅',
             command = lambda: self.InputCharacter(' ˅ ')
@@ -658,7 +658,7 @@ class Calculator:
         self.Frame.columnconfigure(0, weight = 4)
         self.Frame.rowconfigure(9, weight = 3)
 
-        
+
         self.OneButton = U.ttk.Button(
             self.Frame,
             text = '1',
@@ -927,7 +927,7 @@ class Calculator:
         self.Frame.columnconfigure(2, weight = 4)
         self.Frame.rowconfigure(11, weight = 3)
 
-        
+
         self.PointButton = U.ttk.Button(
             self.Frame,
             text = '.',
@@ -993,7 +993,7 @@ class Calculator:
 
         self.FractionButtonList = [self.PointButton, self.ColonButton, self.BarButton]
 
-        
+
     # METHODS
     def BaseMethod(self):
         if self.Mode != 'Base':
@@ -1057,8 +1057,8 @@ class Calculator:
             self.BarButton.configure(state = 'disabled')
         return
 
-    
-    def RoundRadixMethod(self): 
+
+    def RoundRadixMethod(self):
         if self.Mode != 'RoundRadix':
             self.Mode = 'RoundRadix'
             for Element in self.MethodButtonList:
@@ -1086,7 +1086,7 @@ class Calculator:
         return
 
 
-    def RoundCommonMethod(self): 
+    def RoundCommonMethod(self):
         if self.Mode != 'RoundCommon':
             self.Mode = 'RoundCommon'
             for Element in self.MethodButtonList:
@@ -1167,7 +1167,7 @@ class Calculator:
                 self.Mode = 'Calculator'
                 self.RetrieveAndDisplay()
         return
-        
+
 
     def ComToRadMethod(self):
         if self.Mode != 'ComToRad':
@@ -1199,7 +1199,7 @@ class Calculator:
                     self.Input = ''
                     self.InputScreen.configure(text = self.Input)
                     self.Output = 'Enter common.'
-                    self.OutputScreen.configure(text = self.Output)  
+                    self.OutputScreen.configure(text = self.Output)
                 else:
                     self.Common = self.Input
                     self.Radix = I.BaseNCommonToBaseNRadix(self.Common, self.BaseOfCommon, self.Base)
@@ -1217,7 +1217,7 @@ class Calculator:
                 self.Mode = 'Calculator'
                 self.RetrieveAndDisplay()
         return
-    
+
 
     def RadToComMethod(self):
         if self.Mode != 'RadToCom':
@@ -1248,7 +1248,7 @@ class Calculator:
                     self.Input = ''
                     self.InputScreen.configure(text = self.Input)
                     self.Output = 'Enter radix.'
-                    self.OutputScreen.configure(text = self.Output) 
+                    self.OutputScreen.configure(text = self.Output)
                 else:
                     self.Radix = self.Input
                     self.Common = I.BaseNRadixToBaseNCommon(self.Radix, self.BaseOfRadix, self.Base)
@@ -1266,7 +1266,7 @@ class Calculator:
                 self.Mode = 'Calculator'
                 self.RetrieveAndDisplay()
         return
-    
+
 
     def ComToComMethod(self):
         if self.Mode != 'ComToCom':
@@ -1314,12 +1314,12 @@ class Calculator:
                 self.Mode = 'Calculator'
                 self.RetrieveAndDisplay()
         return
-        
+
 
     def OffMethod(self):
         self.Window.destroy()
         return
-    
+
 
     def SinMethod(self):
         if self.Mode == 'Calculator':
@@ -1391,7 +1391,7 @@ class Calculator:
                 if Element['text'] != 'Tan':
                     Element.configure(state = 'disabled')
             self.StoreAndClear()
-            self.Output = ('Enter the degree of Tan.') 
+            self.Output = ('Enter the degree of Tan.')
             self.OutputScreen.configure(text = self.Output)
         else:
             if self.Input != '':
@@ -1402,7 +1402,7 @@ class Calculator:
                     Ratio = U.math.tan(Radians)
                     if self.Base != '10':
                         Ratio = I.BaseTenRadixToBaseNRadix(Ratio, self.Base)
-                    self.Mode = 'Calculator' 
+                    self.Mode = 'Calculator'
                     self.RetrieveAndDisplay()
                     self.Input += str(Ratio)
                     self.InputScreen.configure(text = self.Input)
@@ -1422,7 +1422,7 @@ class Calculator:
                 if Element['text'] != 'SinA':
                     Element.configure(state = 'disabled')
             self.StoreAndClear()
-            self.Output = ('Enter the degree of SinA.')  
+            self.Output = ('Enter the degree of SinA.')
             self.OutputScreen.configure(text = self.Output)
         else:
             if self.Input != '':
@@ -1453,7 +1453,7 @@ class Calculator:
                 if Element['text'] != 'CosA':
                     Element.configure(state = 'disabled')
             self.StoreAndClear()
-            self.Output = ('Enter the degree of CosA.')  
+            self.Output = ('Enter the degree of CosA.')
             self.OutputScreen.configure(text = self.Output)
         else:
             if self.Input != '':
@@ -1484,7 +1484,7 @@ class Calculator:
                 if Element['text'] != 'TanA':
                     Element.configure(state = 'disabled')
             self.StoreAndClear()
-            self.Output = ('Enter the degree of TanA.')  
+            self.Output = ('Enter the degree of TanA.')
             self.OutputScreen.configure(text = self.Output)
         else:
             if self.Input != '':
@@ -1560,8 +1560,9 @@ class Calculator:
         if self.Fraction == 'Rad':
             if self.RoundRadix != '_':
                 Result = I.RoundRadix(Result, self.RoundRadix)
-            Result = I.FormatNumber(Result)
             Result = I.RadixToEFormat(Result, self.Base)
+            if 'e' not in Result:
+                Result = I.FormatNumber(Result)
         else: # self.Fraction == 'Com'
             Result = I.RadixToCommon(Result, self.Base)
             if self.RoundCommon != '_  _':
@@ -1572,7 +1573,7 @@ class Calculator:
         return
 
 
-    def InputCharacter(self, Character): 
+    def InputCharacter(self, Character):
         self.Input = f'{self.Input}{Character}'
         DigitsAndLike = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
                          'E', 'F', '.', ':', '|', '+', '-']
@@ -1599,7 +1600,7 @@ class Calculator:
             else:
                 self.InputScreen.configure(text = self.Input)
         return
-    
+
 
     def StoreAndClear(self):
         self.InputStorage[self.Base] = self.Input
@@ -1672,7 +1673,7 @@ if __name__ == '__main__':
     import tkinter as Tk
     from tkinter import ttk
     from tkinter import font
-    import math 
+    import math
     # Programmer's module/s:
     from ParseExpression import ParseExpression
     from Calculate import Calculate
@@ -1684,7 +1685,7 @@ if __name__ == '__main__':
     from BaseNRadixToBaseNRadix import BaseNRadixToBaseNRadix
     from BaseNCommonToBaseNRadix import BaseNCommonToBaseNRadix
     from BaseNRadixToBaseNCommon import BaseNRadixToBaseNCommon
-    from BaseNCommonToBaseNCommon import BaseNCommonToBaseNCommon 
+    from BaseNCommonToBaseNCommon import BaseNCommonToBaseNCommon
     from Common import Common
     from CommonToRadix import CommonToRadix
     from Radix import Radix
@@ -1726,10 +1727,3 @@ if __name__ == '__main__':
     builtins.I = I
     InstanceOfCalculator = Calculator()
     InstanceOfCalculator.Mainloop()
-
-    
-
-
-
-
-    
