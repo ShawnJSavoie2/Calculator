@@ -4,7 +4,7 @@
 
 def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
-    
+
     '''
     Function requirements:
     Programmer's module/s:
@@ -18,12 +18,12 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
     4. SimplifyRoundedCommon
     Parameter requirements:
     Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
-    Base: must be a string integer that's one number between and including 2 and 16. 
+    Base: must be a string integer that's one number between and including 2 and 16.
     PowerDenominator: must be a literal integer or float.
     RootDenominator: must be a literal integer or float.
     '''
 
-    
+
     Radix = I.CommonToRadix(Common, Base)
     if Base != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, Base)
@@ -87,6 +87,3 @@ if __name__ == '__main__':
     Base = input('Enter Base: ')
     Common = I.RoundCommon(Common, Base)
     print(Common)
-        
-    
-

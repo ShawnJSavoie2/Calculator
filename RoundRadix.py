@@ -4,7 +4,7 @@
 
 def RoundRadix(Radix, Base, Place):
 
-    
+
     '''
     Function requirements:
     Programmer's module/s:
@@ -15,7 +15,7 @@ def RoundRadix(Radix, Base, Place):
     Place: must be a string integer that's in a base equal to the Base.
     '''
 
-    
+
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
     Fraction = Radix[IndexOfPoint + 1:]
@@ -76,8 +76,3 @@ if __name__ == '__main__':
     Place = input('Enter Place: ')
     Radix = I.RoundRadix(Radix, Base, Place)
     print(Radix)
-
-
-
-            
-            

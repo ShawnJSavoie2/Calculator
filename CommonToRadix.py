@@ -4,7 +4,7 @@
 
 def CommonToRadix(Common, Base):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
@@ -17,7 +17,7 @@ def CommonToRadix(Common, Base):
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
-    
+
     IndexOfColon = Common.index(':')
     Whole = Common[:IndexOfColon]
     Fraction = Common[(IndexOfColon + 1):]
@@ -56,5 +56,3 @@ if __name__ == '__main__':
     Base = input('Enter Base: ')
     Radix = I.CommonToRadix(Common, Base)
     print(Radix)
-
-        

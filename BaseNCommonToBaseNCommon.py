@@ -4,7 +4,7 @@
 
 def BaseNCommonToBaseNCommon(Common, FromBase, ToBase):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
@@ -44,11 +44,11 @@ if __name__ == '__main__':
     from Common import Common
     from CommonToRadix import CommonToRadix
     from BaseNIntegerToBaseTenInteger import BaseNIntegerToBaseTenInteger
-    from BaseTenRadixToBaseNRadix import BaseTenRadixToBaseNRadix 
+    from BaseTenRadixToBaseNRadix import BaseTenRadixToBaseNRadix
     from BaseTenIntegerToBaseNInteger import BaseTenIntegerToBaseNInteger
     from EFormatToRadix import EFormatToRadix
     from BaseNRadixToBaseTenRadix import BaseNRadixToBaseTenRadix
-    from RadixToCommon import RadixToCommon 
+    from RadixToCommon import RadixToCommon
     from RoundUpOrTruncate import RoundUpOrTruncate
     from SimplifyCommon import SimplifyCommon
     class I():
@@ -69,8 +69,3 @@ if __name__ == '__main__':
     ToBase = input('Enter ToBase: ')
     Common = I.BaseNCommonToBaseNCommon(Common, FromBase, ToBase)
     print(Common)
-        
-
-
-
-        

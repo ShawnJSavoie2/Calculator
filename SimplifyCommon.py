@@ -4,7 +4,7 @@
 
 def SimplifyCommon(Common, Base):
 
-    
+
     '''
     Function requirements:
     Programmer's module/s:
@@ -16,7 +16,7 @@ def SimplifyCommon(Common, Base):
     Divisor: must be a string integer.
     '''
 
-    
+
     IndexOfColon = Common.index(':')
     Whole = Common[:IndexOfColon]
     Fraction = Common[(IndexOfColon + 1):]
@@ -67,5 +67,3 @@ if __name__ == '__main__':
     Base = input('Enter Base: ')
     Common = I.SimplifyCommon(Common, Base)
     print(Common)
-
-

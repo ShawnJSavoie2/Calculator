@@ -4,7 +4,7 @@
 
 def GetRoot(Power, Exponent):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
@@ -16,7 +16,7 @@ def GetRoot(Power, Exponent):
     Exponent: must be a literal integer.
     '''
 
-    
+
     Quantity = 1.0
     PreviousWorkingRoot = 0
     WorkingRoot = 1.0
@@ -48,13 +48,10 @@ if __name__ == '__main__':
     class I():
         GetRoot = GetRoot
         RoundUpOrTruncate = RoundUpOrTruncate
-        EFormatToRadix = EFormatToRadix 
+        EFormatToRadix = EFormatToRadix
         BaseNIntegerToBaseTenInteger = BaseNIntegerToBaseTenInteger
     builtins.I = I
     Power = float(input('Enter Power: '))
     Exponent = int(input('Enter Exponent: '))
     Root = I.GetRoot(Power, Exponent)
     print(Root)
-
-    
-    

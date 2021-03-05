@@ -4,13 +4,13 @@
 
 def Common(Common):
 
-    
+
     '''
     Parameter requirements:
     Common: must be a string common ('n', 'n|n' or 'n:n|n').
     '''
 
-    
+
     if ':' not in Common and '|' not in Common:
         Common = f'{Common}:0|0'
     if ':' not in Common and '|' in Common:
@@ -26,4 +26,3 @@ if __name__ == '__main__':
     Common = input('Enter Common: ')
     Common = I.Common(Common)
     print(Common)
-    

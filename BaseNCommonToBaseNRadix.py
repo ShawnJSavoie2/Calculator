@@ -4,7 +4,7 @@
 
 def BaseNCommonToBaseNRadix(Common, FromBase, ToBase):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
