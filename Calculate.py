@@ -4,15 +4,15 @@
 
 def Calculate(ExpressionList):
 
-    
+
     '''
     Parameter requirements:
     ExpressionList: must be a list containing at least two string floats and one string operator.
     '''
 
-    
+
     Operators = ['+', '-', '×', '÷', '˄', '˅', 'T']
-    OperatorsAndParentheses = ['+', '-', '×', '÷', '˄', '˅', 'T', '(', ')'] 
+    OperatorsAndParentheses = ['+', '-', '×', '÷', '˄', '˅', 'T', '(', ')']
     OperandOne = ''
     Operator = ''
     OperandTwo = ''
@@ -25,7 +25,7 @@ def Calculate(ExpressionList):
                 OperandTwo = Element
         if Element in Operators:
             Operator = Element
-        if Element == '(': 
+        if Element == '(':
             Result = I.Calculate(ExpressionList[(ForIndex + 1):])
             if OperandOne == '':
                 OperandOne = Result
@@ -34,7 +34,7 @@ def Calculate(ExpressionList):
             GoodToGo = 'no'
             LeftParentheses = 0
             RightParentheses = 0
-            WhileIndex = ForIndex 
+            WhileIndex = ForIndex
             while GoodToGo == 'no':
                 if ExpressionList[WhileIndex] == '(':
                     LeftParentheses = LeftParentheses + 1
@@ -70,11 +70,11 @@ def Calculate(ExpressionList):
                 Operator = ''
                 OperandTwo = ''
             elif Operator == '˅':
-                OperandOne = float(OperandOne) ** (1 / float(OperandTwo))  
+                OperandOne = float(OperandOne) ** (1 / float(OperandTwo))
                 Operator = ''
                 OperandTwo = ''
             elif Operator == 'T':
-                OperandOne = I.GetExponent(float(OperandOne), float(OperandTwo))
+                OperandOne = float(I.GetExponent(float(OperandOne), float(OperandTwo)))
                 Operator = ''
                 OperandTwo = ''
         ForIndex = ForIndex + 1
