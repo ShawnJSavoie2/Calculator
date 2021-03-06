@@ -1,6 +1,6 @@
 # Python 3.9.0
 
-# RoundCommon
+# RoundCommon (WORK ON THIS AND RELATED ONES)
 
 def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
@@ -85,5 +85,7 @@ if __name__ == '__main__':
     builtins.I = I
     Common = input('Enter Common: ')
     Base = input('Enter Base: ')
-    Common = I.RoundCommon(Common, Base)
+    RootDenominator = input('Enter RootDenominator:')
+    PowerDenominator = input('Enter PowerDenominator:')
+    Common = I.RoundCommon(Common, Base, RootDenominator, PowerDenominator)
     print(Common)
