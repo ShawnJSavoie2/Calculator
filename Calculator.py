@@ -1636,6 +1636,9 @@ class Calculator:
             self.ComToRadButton.configure(state = 'normal')
             self.RadToComButton.configure(state = 'disabled')
             self.ComToComButton.configure(state = 'disabled')
+            self.ExpButton.configure(state = 'normal')
+            self.PosButton.configure(state = 'normal')
+            self.NegButton.configure(state = 'normal')
             self.PointButton.configure(state = 'normal')
             self.ColonButton.configure(state = 'disabled')
             self.BarButton.configure(state = 'disabled')
@@ -1644,6 +1647,9 @@ class Calculator:
             self.ComToRadButton.configure(state = 'disabled')
             self.RadToComButton.configure(state = 'normal')
             self.ComToComButton.configure(state = 'normal')
+            self.ExpButton.configure(state = 'disabled')
+            self.PosButton.configure(state = 'disabled')
+            self.NegButton.configure(state = 'disabled')
             self.PointButton.configure(state = 'disabled')
             self.ColonButton.configure(state = 'normal')
             self.BarButton.configure(state = 'normal')
@@ -1699,7 +1705,9 @@ if __name__ == '__main__':
     from RadixToEFormat import RadixToEFormat
     from EFormatToRadix import EFormatToRadix
     from SimplifyCommon import SimplifyCommon
+    from SimplifyRoundedCommon import SimplifyRoundedCommon
     from GetExponent import GetExponent
+    from RoundRadix import RoundRadix
     from RoundCommon import RoundCommon
     from RoundUpOrTruncate import RoundUpOrTruncate
     class U():
@@ -1726,7 +1734,9 @@ if __name__ == '__main__':
         RadixToEFormat = RadixToEFormat
         EFormatToRadix = EFormatToRadix
         SimplifyCommon = SimplifyCommon
+        SimplifyRoundedCommon = SimplifyRoundedCommon
         GetExponent = GetExponent
+        RoundRadix = RoundRadix
         RoundCommon = RoundCommon
         RoundUpOrTruncate = RoundUpOrTruncate
     builtins.U = U
