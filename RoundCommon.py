@@ -1,6 +1,6 @@
 # Python 3.9.0
 
-# RoundCommon
+# RoundCommon (WORK ON THIS AND RELATED ONES)
 
 def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
@@ -19,8 +19,8 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
     Parameter requirements:
     Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
-    PowerDenominator: must be a literal integer or float.
-    RootDenominator: must be a literal integer or float.
+    PowerDenominator: must be a string integer.
+    RootDenominator: must be a string integer.
     '''
 
 
@@ -29,6 +29,8 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
         Radix = I.BaseNRadixToBaseTenRadix(Radix, Base)
         RootDenominator = I.BaseNIntegerToBaseTenInteger(RootDenominator, Base)
         PowerDenominator = I.BaseNIntegerToBaseTenInteger(PowerDenominator, Base)
+    RootDenominator = int(RootDenominator)
+    PowerDenominator = int(PowerDenominator)
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
     Fraction = Radix[IndexOfPoint:]
@@ -45,7 +47,7 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
             Denominator /= Numerator
             Numerator /= Numerator
     else:
-        Numerator = round(Numerator, 0)
+        Numerator = round(Numerator)
         if Numerator in Denominators:
             Denominator /= Numerator
             Numerator /= Numerator
@@ -85,5 +87,7 @@ if __name__ == '__main__':
     builtins.I = I
     Common = input('Enter Common: ')
     Base = input('Enter Base: ')
-    Common = I.RoundCommon(Common, Base)
+    RootDenominator = input('Enter RootDenominator: ')
+    PowerDenominator = input('Enter PowerDenominator: ')
+    Common = I.RoundCommon(Common, Base, RootDenominator, PowerDenominator)
     print(Common)
