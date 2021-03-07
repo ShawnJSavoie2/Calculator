@@ -22,9 +22,7 @@ class Calculator:
         self.Base = '10'
         self.Fraction = 'Rad'
         self.RoundRadix = '_'
-        self.PowerDenominator = '_'
-        self.RootDenominator = '_'
-        self.RoundCommon = f'{self.PowerDenominator}  {self.RootDenominator}'
+        self.RoundCommon = '_  _'
         self.Radix = ''
         self.BaseOfRadix = ''
         self.Common = ''
@@ -1572,7 +1570,7 @@ class Calculator:
         else: # self.Fraction == 'Com'
             Result = I.RadixToCommon(Result, self.Base)
             if self.RoundCommon != '_  _':
-                Result = I.RoundCommon(Result, self.Base, self.RootDenominator, self.PowerDenominator)
+                Result = I.RoundCommon(Result, self.Base, self.RootDenominatorStorage[self.Base], self.PowerDenominatorStorage[self.Base])
             Result = I.FormatNumber(Result)
         self.Output = Result
         self.OutputScreen.configure(text = self.Output)
