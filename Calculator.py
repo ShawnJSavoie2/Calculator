@@ -1080,7 +1080,7 @@ class Calculator:
         else:
             if self.Input != '':
                 self.RoundRadixStorage[self.Base] = self.Input
-                self.RoundRadixDisplayButton.configure(text = self.RoundRadix)
+                self.RoundRadixDisplayButton.configure(text = self.RoundRadixStorage[self.Base])
                 self.Mode = 'Calculator'
                 self.RetrieveAndDisplay()
             else:
@@ -1562,8 +1562,8 @@ class Calculator:
         if self.Base != '10':
             Result = I.BaseTenRadixToBaseNRadix(Result, self.Base)
         if self.Fraction == 'Rad':
-            if self.RoundRadix != '_':
-                Result = I.RoundRadix(Result, self.RoundRadix)
+            if self.RoundRadixStorage[self.Base] != '_':
+                Result = I.RoundRadix(Result, self.Base, self.RoundRadixStorage[self.Base])
             Result = I.RadixToEFormat(Result, self.Base)
             if 'e' not in Result:
                 Result = I.FormatNumber(Result)
