@@ -1,6 +1,6 @@
 # Python 3.9.0
 
-# RoundCommon (WORK ON THIS AND RELATED ONES)
+# RoundCommon
 
 def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
