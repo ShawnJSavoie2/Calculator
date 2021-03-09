@@ -18,7 +18,7 @@ def RoundRadix(Radix, Base, Place):
 
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
-    Fraction = Radix[IndexOfPoint + 1:]
+    Fraction = Radix[(IndexOfPoint + 1):]
     if Base == '10':
         if len(Fraction) > int(Place):
             Fraction = f'0.{Fraction}'
