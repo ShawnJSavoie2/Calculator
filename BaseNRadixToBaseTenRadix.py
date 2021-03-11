@@ -4,14 +4,14 @@
 
 def BaseNRadixToBaseTenRadix(Radix, Base):
 
-    
+
     '''
     Parameter requirements:
     Radix: must be a string radix that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
-    
+
     AlternativeDigits = {
         'A': '10',
         'B': '11',

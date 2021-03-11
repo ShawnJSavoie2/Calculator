@@ -21,7 +21,7 @@ class Calculator:
         self.Mode = 'Calculator'
         self.Base = '10'
         self.Fraction = 'Rad'
-        self.RoundRadix = '_'
+        #self.RoundRadix = '_'
         self.RoundCommon = '_  _'
         self.Radix = ''
         self.BaseOfRadix = ''
@@ -201,7 +201,7 @@ class Calculator:
 
         self.RoundRadixDisplayButton = U.ttk.Button(
             self.Frame,
-            text = self.RoundRadix,
+            text = self.RoundRadixStorage[self.Base],
             state = 'disabled'
             )
         self.RoundRadixDisplayButton.grid(

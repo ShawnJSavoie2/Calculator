@@ -24,7 +24,6 @@ def RoundRadix(Radix, Base, Place):
             Fraction = f'0.{Fraction}'
             Fraction = round(float(Fraction), int(Place))
             Radix = str(float(Whole) + Fraction)
-            return Radix
     else:
         Place = I.BaseNIntegerToBaseTenInteger(Place, Base)
         if len(Fraction) > int(Place):
@@ -42,7 +41,7 @@ def RoundRadix(Radix, Base, Place):
                 if Count == 0:
                     break
                 else:
-                    if Count == 1 and FractionList[(Element[0] + 1)] == UsedDigits[(int(Base) - 1)]:
+                    if Count == 1 and FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
                         CurrentDigit = FractionList[(Element[0] + 1)]
                         Count -= 1
                     else:
@@ -50,9 +49,18 @@ def RoundRadix(Radix, Base, Place):
                             CurrentDigit = FractionList[(Element[0] + 1)]
                             Count -= 1
                         else: # CurrentDigit not in HalfOfDigits
-                            IndexOfFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 1)])
-                            CurrentDigit = UsedDigits[(IndexOfFollowingDigit + 1)]
-                            Count -= 1
+                            if FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
+                                FractionList[(Element[0]) + 1] = '0'
+                                IndexOfSecondFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 2)])
+                                FractionList[(Element[0] + 2)] = UsedDigits[(IndexOfSecondFollowingDigit + 1)]
+                                CurrentDigit = FractionList[(Element[0] + 1)]
+                                Count -= 1
+                            else:
+                                IndexOfFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 1)])
+                                CurrentDigit = UsedDigits[(IndexOfFollowingDigit + 1)]
+                                Count -= 1
+            if CurrentDigit == Digits[int(Base)]:
+                CurrentDigit = Digits[(int(Base) - 1)]
             FractionList.reverse()
             FractionList = FractionList[:(int(Place) - 1)]
             FractionList.append(CurrentDigit)
@@ -60,7 +68,7 @@ def RoundRadix(Radix, Base, Place):
             for Element in FractionList:
                 Fraction = f'{Fraction}{Element}'
             Radix = f'{Whole}.{Fraction}'
-            return Radix
+    return Radix
 
 
 if __name__ == '__main__':
