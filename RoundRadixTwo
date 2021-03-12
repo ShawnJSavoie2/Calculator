@@ -1,0 +1,87 @@
+# Python 3.9.0
+
+# RoundRadix
+
+def RoundRadixTwo(Radix, Base, Place):
+
+
+    '''
+    Function requirements:
+    Programmer's module/s:
+    1. BaseNIntegerToBaseTenInteger
+    Parameter requirements:
+    Radix: must be a string radix that's in a base between and including 2 and 16.
+    Base: must be a string integer that's one number between and including 2 and 16.
+    Place: must be a string integer that's in a base equal to the Base.
+    '''
+
+
+    IndexOfPoint = Radix.index('.')
+    Whole = Radix[:IndexOfPoint]
+    Fraction = Radix[(IndexOfPoint + 1):]
+    if Base == '10':
+        if len(Fraction) > int(Place):
+            Fraction = f'0.{Fraction}'
+            Fraction = round(float(Fraction), int(Place))
+            Radix = str(float(Whole) + Fraction)
+    else:
+        Place = I.BaseNIntegerToBaseTenInteger(Place, Base)
+        if len(Fraction) > int(Place):
+            Digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
+                      'F']
+            HalfBase = round(int(Base) / 2)
+            UsedDigits = Digits[:int(Base)]
+            HalfOfDigits = UsedDigits[:HalfBase]
+            Count = len(Fraction) - int(Place)
+            RadixList = []
+            for Digit in reversed(Radix):
+                RadixList.append(Digit)
+            CurrentDigit = RadixList[0]
+            for Element in enumerate(RadixList):
+                if Count == 0:
+                    if CurrentDigit != Digits[int(Base)]:
+                        IndexOfCurrentDigit = Element[0]
+                        break
+                    else:
+                        RadixList[Element[0]] = '0'
+                        IndexOfFollowingDigit = Digits.index(RadixList[(Element[0] + 1)])
+                        RadixList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                        CurrentDigit = RadixList[(Element[0] + 1)]
+                else:
+                    if CurrentDigit in HalfOfDigits:
+                        CurrentDigit = RadixList[(Element[0] + 1)]
+                        Count -= 1
+                    else: # CurrentDigit not in HalfOfDigits
+                        if CurrentDigit == Digits[int(Base)]:
+                            RadixList[Element[0]] = '0'
+                            IndexOfFollowingDigit = Digits.index(RadixList[(Element[0] + 1)])
+                            RadixList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                            CurrentDigit = RadixList[(Element[0] + 1)]
+                            Count -= 1
+                        else:
+                            IndexOfFollowingDigit = Digits.index(RadixList[(Element[0] + 1)])
+                            RadixList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                            CurrentDigit = RadixList[(Element[0] + 1)]
+                            Count -= 1
+            RadixList = RadixList[IndexOfCurrentDigit:]
+            RadixList.reverse()
+            Radix = ''
+            for Element in RadixList:
+                Radix = f'{Radix}{Element}'
+            #Radix = f'{Whole}.{Fraction}'
+    return Radix
+
+
+if __name__ == '__main__':
+    import builtins
+    # Programmer's module/s:
+    from BaseNIntegerToBaseTenInteger import BaseNIntegerToBaseTenInteger
+    class I():
+        RoundRadixTwo = RoundRadixTwo
+        BaseNIntegerToBaseTenInteger = BaseNIntegerToBaseTenInteger
+    builtins.I = I
+    Radix = input('Enter Radix: ')
+    Base = input('Enter Base: ')
+    Place = input('Enter Place: ')
+    Radix = I.RoundRadixTwo(Radix, Base, Place)
+    print(Radix)

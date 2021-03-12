@@ -49,15 +49,16 @@ def RoundRadix(Radix, Base, Place):
                             CurrentDigit = FractionList[(Element[0] + 1)]
                             Count -= 1
                         else: # CurrentDigit not in HalfOfDigits
-                            if FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
-                                FractionList[(Element[0]) + 1] = '0'
-                                IndexOfSecondFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 2)])
-                                FractionList[(Element[0] + 2)] = UsedDigits[(IndexOfSecondFollowingDigit + 1)]
+                            if CurrentDigit == Digits[int(Base)]:
+                                FractionList[Element[0]] = '0'
+                                IndexOfFollowingDigit = Digits.index(FractionList[(Element[0] + 1)])
+                                FractionList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
                                 CurrentDigit = FractionList[(Element[0] + 1)]
                                 Count -= 1
                             else:
-                                IndexOfFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 1)])
-                                CurrentDigit = UsedDigits[(IndexOfFollowingDigit + 1)]
+                                IndexOfFollowingDigit = Digits.index(FractionList[(Element[0] + 1)])
+                                FractionList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                                CurrentDigit = FractionList[(Element[0] + 1)]
                                 Count -= 1
             if CurrentDigit == Digits[int(Base)]:
                 CurrentDigit = Digits[(int(Base) - 1)]
@@ -84,3 +85,10 @@ if __name__ == '__main__':
     Place = input('Enter Place: ')
     Radix = I.RoundRadix(Radix, Base, Place)
     print(Radix)
+
+'''if FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
+    FractionList[(Element[0]) + 1] = '0'
+    IndexOfSecondFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 2)])
+    FractionList[(Element[0] + 2)] = UsedDigits[(IndexOfSecondFollowingDigit + 1)]
+    CurrentDigit = FractionList[(Element[0] + 1)]
+    Count -= 1'''
