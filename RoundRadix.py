@@ -27,48 +27,58 @@ def RoundRadix(Radix, Base, Place):
     else:
         Place = I.BaseNIntegerToBaseTenInteger(Place, Base)
         if len(Fraction) > int(Place):
+            LengthOfWhole = len(Whole)
+            LengthOfFraction = len(Fraction)
+            LengthOfNumber = LengthOfWhole + LengthOfFraction
+            Number = f'0{Whole}{Fraction}'
             Digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E',
                       'F']
             HalfBase = round(int(Base) / 2)
             UsedDigits = Digits[:int(Base)]
             HalfOfDigits = UsedDigits[:HalfBase]
-            FractionList = []
-            for Digit in reversed(Fraction):
-                FractionList.append(Digit)
-            Count = len(Fraction) - int(Place)
-            CurrentDigit = FractionList[0]
-            for Element in enumerate(FractionList):
+            Count = LengthOfFraction - int(Place)
+            NumberList = []
+            for Digit in reversed(Number):
+                NumberList.append(Digit)
+            CurrentDigit = NumberList[0]
+            for Element in enumerate(NumberList):
                 if Count == 0:
-                    break
+                    if CurrentDigit != Digits[int(Base)]:
+                        break
+                    else:
+                        NumberList[Element[0]] = '0'
+                        IndexOfFollowingDigit = Digits.index(NumberList[(Element[0] + 1)])
+                        NumberList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                        CurrentDigit = NumberList[(Element[0] + 1)]
                 else:
-                    if Count == 1 and FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
-                        CurrentDigit = FractionList[(Element[0] + 1)]
+                    if CurrentDigit in HalfOfDigits:
+                        NumberList[Element[0]] = '0'
+                        CurrentDigit = NumberList[(Element[0] + 1)]
                         Count -= 1
                     else:
-                        if CurrentDigit in HalfOfDigits:
-                            CurrentDigit = FractionList[(Element[0] + 1)]
-                            Count -= 1
-                        else: # CurrentDigit not in HalfOfDigits
-                            if CurrentDigit == Digits[int(Base)]:
-                                FractionList[Element[0]] = '0'
-                                IndexOfFollowingDigit = Digits.index(FractionList[(Element[0] + 1)])
-                                FractionList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
-                                CurrentDigit = FractionList[(Element[0] + 1)]
-                                Count -= 1
-                            else:
-                                IndexOfFollowingDigit = Digits.index(FractionList[(Element[0] + 1)])
-                                FractionList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
-                                CurrentDigit = FractionList[(Element[0] + 1)]
-                                Count -= 1
-            if CurrentDigit == Digits[int(Base)]:
-                CurrentDigit = Digits[(int(Base) - 1)]
-            FractionList.reverse()
-            FractionList = FractionList[:(int(Place) - 1)]
-            FractionList.append(CurrentDigit)
-            Fraction = ''
-            for Element in FractionList:
-                Fraction = f'{Fraction}{Element}'
-            Radix = f'{Whole}.{Fraction}'
+                        NumberList[Element[0]] = '0'
+                        IndexOfFollowingDigit = Digits.index(NumberList[(Element[0] + 1)])
+                        NumberList[(Element[0] + 1)] = Digits[(IndexOfFollowingDigit + 1)]
+                        CurrentDigit = NumberList[(Element[0] + 1)]
+                        Count -= 1
+            NumberList.reverse()
+            if NumberList[0] == '0':
+                NumberList = NumberList[1:]
+            Difference = len(NumberList) - LengthOfNumber
+            if Difference == 0:
+                NumberList.insert(LengthOfWhole, '.')
+            else:
+                LengthOfWhole += Difference
+                NumberList.insert(LengthOfWhole, '.')
+            while NumberList[-1] == '0':
+                NumberList = NumberList[:-1]
+            Number = ''
+            for Element in NumberList:
+                Number = f'{Number}{Element}'
+            if Number[-1] == '.':
+                Radix = str(float(Number))
+            else:
+                Radix = Number
     return Radix
 
 
@@ -85,10 +95,3 @@ if __name__ == '__main__':
     Place = input('Enter Place: ')
     Radix = I.RoundRadix(Radix, Base, Place)
     print(Radix)
-
-'''if FractionList[(Element[0] + 1)] == Digits[int(Base)] or FractionList[(Element[0] + 1)] == Digits[(int(Base) - 1)]:
-    FractionList[(Element[0]) + 1] = '0'
-    IndexOfSecondFollowingDigit = UsedDigits.index(FractionList[(Element[0] + 2)])
-    FractionList[(Element[0] + 2)] = UsedDigits[(IndexOfSecondFollowingDigit + 1)]
-    CurrentDigit = FractionList[(Element[0] + 1)]
-    Count -= 1'''
