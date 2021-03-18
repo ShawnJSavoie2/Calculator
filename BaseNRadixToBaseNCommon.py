@@ -4,7 +4,7 @@
 
 def BaseNRadixToBaseNCommon(Radix, FromBase, ToBase):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
@@ -17,9 +17,7 @@ def BaseNRadixToBaseNCommon(Radix, FromBase, ToBase):
     4. RadixToCommon
     4.1. RoundUpOrTruncate
     4.2 SimplifyCommon
-    Parameter requirements:
-    Radix: must be a string radix that's in base 10.
-    Base: must be a string integer that's one number between and including 2 and 16.
+    5. FormatNumber
     Parameter requirements:
     Radix: must be a string radix that's in a base between and including 2 and 16.
     FromBase: must be a string integer that's one number between and including 2 and 16.
@@ -28,11 +26,20 @@ def BaseNRadixToBaseNCommon(Radix, FromBase, ToBase):
 
 
     Radix = I.Radix(Radix)
+    Separators = [',', '_']
+    Number = ''
+    for Element in Common:
+        if Element in Separators:
+            continue
+        else:
+            Number = f'{Number}{Element}'
+    Radix = Number
     if FromBase != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, FromBase)
     if ToBase != '10':
         Radix = I.BaseTenRadixToBaseNRadix(Radix, ToBase)
     Common = I.RadixToCommon(Radix, ToBase)
+    Common = I.FormatNumber(Common)
     return Common
 
 
@@ -48,6 +55,7 @@ if __name__ == '__main__':
     from RadixToCommon import RadixToCommon
     from RoundUpOrTruncate import RoundUpOrTruncate
     from SimplifyCommon import SimplifyCommon
+    from FormatNumber import FormatNumber
     class I():
         BaseNRadixToBaseNCommon = BaseNRadixToBaseNCommon
         Radix = Radix
@@ -59,6 +67,7 @@ if __name__ == '__main__':
         RadixToCommon = RadixToCommon
         RoundUpOrTruncate = RoundUpOrTruncate
         SimplifyCommon = SimplifyCommon
+        FormatNumber = FormatNumber
     builtins.I = I
     Radix = input('Enter Radix: ')
     FromBase = input('Enter FromBase: ')

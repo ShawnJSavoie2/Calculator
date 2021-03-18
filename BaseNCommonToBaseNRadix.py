@@ -15,9 +15,7 @@ def BaseNCommonToBaseNRadix(Common, FromBase, ToBase):
     2.2.1. BaseTenIntegerToBaseNInteger
     2.2.2. EFormatToRadix
     3. BaseNRadixToBaseTenRadix
-    Parameter requirements:
-    Radix: must be a string radix that's in base 10.
-    Base: must be a string integer that's one number between and including 2 and 16.
+    4. FormatNumber
     Parameter requirements:
     Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
     FromBase: must be a string integer that's one number between and including 2 and 16.
@@ -26,11 +24,20 @@ def BaseNCommonToBaseNRadix(Common, FromBase, ToBase):
 
 
     Common = I.Common(Common)
+    Separators = [',', '_']
+    Number = ''
+    for Element in Common:
+        if Element in Separators:
+            continue
+        else:
+            Number = f'{Number}{Element}'
+    Common = Number
     Radix = I.CommonToRadix(Common, FromBase)
     if FromBase != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, FromBase)
     if ToBase != '10':
         Radix = I.BaseTenRadixToBaseNRadix(Radix, ToBase)
+    Radix = I.FormatNumber(Radix)
     return Radix
 
 
@@ -44,6 +51,7 @@ if __name__ == '__main__':
     from BaseTenIntegerToBaseNInteger import BaseTenIntegerToBaseNInteger
     from EFormatToRadix import EFormatToRadix
     from BaseNRadixToBaseTenRadix import BaseNRadixToBaseTenRadix
+    from FormatNumber import FormatNumber
     class I():
         BaseNCommonToBaseNRadix = BaseNCommonToBaseNRadix
         Common = Common
@@ -53,6 +61,7 @@ if __name__ == '__main__':
         BaseTenIntegerToBaseNInteger = BaseTenIntegerToBaseNInteger
         EFormatToRadix = EFormatToRadix
         BaseNRadixToBaseTenRadix = BaseNRadixToBaseTenRadix
+        FormatNumber = FormatNumber
     builtins.I = I
     Common = input('Enter Common: ')
     FromBase = input('Enter FromBase: ')
