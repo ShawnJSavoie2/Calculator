@@ -4,7 +4,7 @@
 
 def BaseTenRadixToBaseNRadix(Radix, Base):
 
-    
+
     '''
     Function requirements:
     Programmer's modules:
@@ -14,7 +14,7 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
-    
+
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
     Fraction = Radix[(IndexOfPoint + 1):]
@@ -32,8 +32,8 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
         Digits = []
         Digit = Whole // Magnitude
         Remainder = Whole - (Digit * Magnitude)
-        Digits.append(int(Digit)) 
-        if Exponent != 0: 
+        Digits.append(int(Digit))
+        if Exponent != 0:
             Magnitude = Magnitude / Base
             Exponent = Exponent - 1
             if Remainder >= Base:
@@ -53,7 +53,7 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
                         GoodToGo = 'no'
                     else:
                         GoodToGo = 'yes'
-            if Exponent != 0: 
+            if Exponent != 0:
                 for Count in range(Exponent):
                     Digits.append(0)
             Digits.append(int(Remainder))

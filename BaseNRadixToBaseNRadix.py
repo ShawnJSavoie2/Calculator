@@ -3,8 +3,8 @@
 # BaseNRadixToBaseNRadix
 
 def BaseNRadixToBaseNRadix(Radix, FromBase, ToBase):
-    
-    
+
+
     '''
     Function requirements:
     Programmer's modules:
@@ -14,9 +14,7 @@ def BaseNRadixToBaseNRadix(Radix, FromBase, ToBase):
     3.1. BaseTenIntegerToBaseNInteger
     3.2. EFormatToRadix
     3.2.1. BaseNIntegerToBaseTenInteger
-    Parameter requirements:
-    Radix: must be a string radix that's in base 10.
-    Base: must be a string integer that's one number between and including 2 and 16.
+    4. FormatNumber
     Parameter requirements:
     Radix: must be a string radix that's in a base between and including 2 and 16.
     FromBase: must be a string integer that's one number between and including 2 and 16.
@@ -25,10 +23,19 @@ def BaseNRadixToBaseNRadix(Radix, FromBase, ToBase):
 
 
     Radix = I.Radix(Radix)
+    Separators = [',', '_']
+    Number = ''
+    for Element in Radix:
+        if Element in Separators:
+            continue
+        else:
+            Number = f'{Number}{Element}'
+    Radix = Number
     if FromBase != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, FromBase)
     if ToBase != '10':
         Radix = I.BaseTenRadixToBaseNRadix(Radix, ToBase)
+    Radix = I.FormatNumber(Radix)
     return Radix
 
 
@@ -41,6 +48,7 @@ if __name__ == '__main__':
     from BaseTenIntegerToBaseNInteger import BaseTenIntegerToBaseNInteger
     from EFormatToRadix import EFormatToRadix
     from BaseNIntegerToBaseTenInteger import BaseNIntegerToBaseTenInteger
+    from FormatNumber import FormatNumber
     class I():
         BaseNRadixToBaseNRadix = BaseNRadixToBaseNRadix
         Radix = Radix
@@ -50,6 +58,7 @@ if __name__ == '__main__':
         BaseTenIntegerToBaseNInteger = BaseTenIntegerToBaseNInteger
         EFormatToRadix = EFormatToRadix
         BaseNIntegerToBaseTenInteger = BaseNIntegerToBaseTenInteger
+        FormatNumber = FormatNumber
     builtins.I = I
     Radix = input('Enter Radix: ')
     FromBase = input('Enter FromBase: ')
