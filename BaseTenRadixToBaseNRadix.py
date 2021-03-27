@@ -22,7 +22,6 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
     Fraction = Radix[IndexOfPoint:]
-    #Fraction = Radix[(IndexOfPoint + 1):]
     Whole = int(Whole)
     Base = int(Base)
     if Whole != 0:
