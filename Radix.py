@@ -4,13 +4,13 @@
 
 def Radix(Radix):
 
-    
+
     '''
-    Parameter requirements:
+    Parameters:
     Radix: must be a string radix ('n', 'n.n')
     '''
 
-    
+
     if '.' not in Radix:
         Radix = f'{Radix}.0'
     return Radix

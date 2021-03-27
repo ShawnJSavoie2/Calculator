@@ -4,22 +4,23 @@
 
 def RadixToCommon(Radix, Base):
 
-    
+
     '''
-    Function requirements:
-    Programmer's module/s:
+    Parameters:
+    Radix: must be a string radix with a base that's between and including 2 and 16.
+    Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
     1. BaseNRadixToBaseTenRadix,
     2. RoundUpOrTruncate
     2.1. EFormatToRadix
     2.1.1. BaseNIntegerToBaseTenInteger
     3. BaseTenIntegerToBaseNInteger
-    4. SimplifyCommon 
-    Parameter requirements:
-    Radix: must be a string radix with a base that's between and including 2 and 16.
-    Base: must be a string integer that's one number between and including 2 and 16.
+    4. SimplifyCommon
     '''
 
-    
+
     if Base != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, Base)
     IndexOfPoint = Radix.index('.')
@@ -27,7 +28,7 @@ def RadixToCommon(Radix, Base):
     Fraction = Radix[IndexOfPoint:]
     Denominator = 2
     GoodToGo = 'No'
-    while GoodToGo == 'No': 
+    while GoodToGo == 'No':
         Numerator = float(Fraction) * Denominator
         if Numerator % 1 == 0:
             GoodToGo = 'Yes'

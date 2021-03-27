@@ -6,7 +6,7 @@ def Calculate(ExpressionList):
 
 
     '''
-    Parameter requirements:
+    Parameters:
     ExpressionList: must be a list containing at least two string floats and one string operator.
     '''
 

@@ -6,18 +6,23 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
 
 
     '''
-    Function requirements:
-    Programmer's modules:
-    1. BaseTenIntegerToBaseNInteger
-    Parameter requirements:
+    Parameters:
     Radix: must be a string radix that's in base 10.
     Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
+    1. GetExponent
+    2. SimplifyRoundedCommon
+    2.1. BaseNIntegerToBaseTenInteger
+    2.2. BaseTenIntegerToBaseNInteger
     '''
 
 
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
-    Fraction = Radix[(IndexOfPoint + 1):]
+    Fraction = Radix[IndexOfPoint:]
+    #Fraction = Radix[(IndexOfPoint + 1):]
     Whole = int(Whole)
     Base = int(Base)
     if Whole != 0:
@@ -72,36 +77,38 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
             else:
                 Whole = f'{Whole}{Digit}'
     #Fraction part
-    if Fraction != '0':
-        Exponent = 1
-        for Digit in Fraction:
-            if Digit == '0':
-                Exponent = Exponent + 1
-            else:
-                break
-        Fraction = f'.{Fraction}'
-        Divisor = (10 ** Exponent) / (float(Fraction) * (10 ** Exponent))
-        Exponent = 1
-        Magnitude = Base ** Exponent
-        while Divisor > Magnitude:
-            Exponent = Exponent + 1
-            Magnitude = Base ** Exponent
-        Quotient = Magnitude / Divisor
-        Fraction = ''
-        if (Quotient % 1) == 0:
-            Fraction = str(int(Quotient))
-        else:
-            for Element in str(Quotient):
-                if Element != '.':
-                    Fraction = f'{Fraction}{Element}'
-        Fraction = I.BaseTenIntegerToBaseNInteger(Fraction, Base)
-        if Fraction[-1] == '0':
-            while Fraction[-1] == '0':
-                Fraction = Fraction[:-1]
-        if Exponent != 0:
-            for Count in range(Exponent - 1):
-                Fraction = f'0{Fraction}'
-    # Whole and Fraction parts
+    RootDenominator = int(Base)
+    PowerDenominator = int(Base) ** 16
+    Exponent = I.GetExponent(RootDenominator, PowerDenominator)
+    Denominators = [RootDenominator]
+    WorkingPowerDenominator = RootDenominator
+    for Times in range(Exponent - 1):
+        WorkingPowerDenominator *= RootDenominator
+        Denominators.append(WorkingPowerDenominator)
+    Denominator = PowerDenominator
+    Numerator = float(Fraction) * Denominator
+    if Numerator % 1 == 0:
+        if Numerator in Denominators:
+            Denominator /= Numerator
+            Numerator /= Numerator
+    else:
+        Numerator = round(Numerator)
+        if Numerator in Denominators:
+            Denominator /= Numerator
+            Numerator /= Numerator
+    Numerator = int(Numerator)
+    Denominator = int(Denominator)
+    Common = f'0:{Numerator}|{Denominator}'
+    Common = I.SimplifyRoundedCommon(Common, '10', Base)
+    IndexOfColon = Common.index(':')
+    IndexOfBar = Common.index('|')
+    Numerator = Common[(IndexOfColon + 1):IndexOfBar]
+    Denominator = Common[(IndexOfBar + 1):]
+    Numerator = I.BaseTenIntegerToBaseNInteger(Numerator, Base)
+    Denominator = I.BaseTenIntegerToBaseNInteger(Denominator, Base)
+    Fraction = Numerator
+    for Times in range((len(Denominator) - 1 - len(Numerator))):
+        Fraction = f'0{Fraction}'
     Radix = f'{Whole}.{Fraction}'
     return Radix
 
@@ -109,9 +116,13 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
 if __name__ == '__main__':
     import builtins
     # Programmer's module/s:
+    from GetExponent import GetExponent
+    from SimplifyRoundedCommon import SimplifyRoundedCommon
     from BaseTenIntegerToBaseNInteger import BaseTenIntegerToBaseNInteger
     class I():
         BaseTenRadixToBaseNRadix = BaseTenRadixToBaseNRadix
+        GetExponent = GetExponent
+        SimplifyRoundedCommon = SimplifyRoundedCommon
         BaseTenIntegerToBaseNInteger = BaseTenIntegerToBaseNInteger
     builtins.I = I
     Radix = input('Enter Radix: ')

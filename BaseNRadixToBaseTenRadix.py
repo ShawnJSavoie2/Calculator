@@ -6,9 +6,13 @@ def BaseNRadixToBaseTenRadix(Radix, Base):
 
 
     '''
-    Parameter requirements:
+    Parameters:
     Radix: must be a string radix that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
+    BaseNIntegerToBaseTenInteger
     '''
 
 
@@ -35,28 +39,29 @@ def BaseNRadixToBaseTenRadix(Radix, Base):
         Magnitude = int(Base) ** Exponent
         PositiveMagnitudes.append(Magnitude)
     PositiveMagnitudes.reverse()
-    ConvertedWhole = 0
+    WorkingWhole = 0
     for Index in range(len(PositiveMagnitudes)):
-        ConvertedWhole += (float(Whole[Index]) * PositiveMagnitudes[Index])
+        WorkingWhole += (float(Whole[Index]) * PositiveMagnitudes[Index])
+    Whole = int(WorkingWhole)
     # Fraction part
-    NegativeMagnitudes = []
-    for Exponent in range(len(Fraction) + 1):
-        if Exponent == 0:
-            continue
-        Magnitude = 1 / (int(Base) ** Exponent)
-        NegativeMagnitudes.append(Magnitude)
-    ConvertedFraction = 0
-    for Index in range(len(NegativeMagnitudes)):
-        ConvertedFraction += (float(Fraction[Index]) * NegativeMagnitudes[Index])
-    # Whole and fraction parts.
-    Radix = str(ConvertedWhole + ConvertedFraction)
+    Denominator = '1'
+    for Times in range(len(Fraction)):
+        Denominator = f'{Denominator}0'
+    Numerator = I.BaseNIntegerToBaseTenInteger(Fraction, Base)
+    Denominator = I.BaseNIntegerToBaseTenInteger(Denominator, Base)
+    Fraction = str(int(Numerator) / int(Denominator))
+    Fraction = Fraction[2:]
+    # Whole and Fraction parts
+    Radix = f'{Whole}.{Fraction}'
     return Radix
 
 
 if __name__ == '__main__':
     import builtins
+    from BaseNIntegerToBaseTenInteger import BaseNIntegerToBaseTenInteger
     class I():
         BaseNRadixToBaseTenRadix = BaseNRadixToBaseTenRadix
+        BaseNIntegerToBaseTenInteger = BaseNIntegerToBaseTenInteger
     builtins.I = I
     Radix = input('Enter Radix: ')
     Base = input('Enter Base: ')

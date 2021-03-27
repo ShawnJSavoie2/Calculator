@@ -6,7 +6,7 @@ def Common(Common):
 
 
     '''
-    Parameter requirements:
+    Parameters:
     Common: must be a string common ('n', 'n|n' or 'n:n|n').
     '''
 

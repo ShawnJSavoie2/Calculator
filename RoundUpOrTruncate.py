@@ -4,17 +4,18 @@
 
 def RoundUpOrTruncate(Radix):
 
-    
+
     '''
-    Function requirements:
-    Programmer's module/s:
+    Parameters:
+    Radix: must be a literal float.
+
+    Modules:
+    Programmer's:
     1. EFormatToRadix
     1.1. BaseNIntegerToBaseTenInteger
-    Parameter requirements:
-    Radix: must be a literal float.
     '''
 
-    
+
     Radix = str(Radix)
     if 'e' in Radix:
         Radix = I.EFormatToRadix(Radix, Base)

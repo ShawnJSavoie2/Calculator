@@ -4,17 +4,18 @@
 
 def EFormatToRadix(EFormat, Base):
 
-    
+
     '''
-    Function requirements:
-    Programmer's modules:
-    1. BaseNIntegerToBaseTenInteger
-    Parameter requirements:
+    Parameters:
     EFormat: must be a string EFormat ('ne[+/-]n') that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
+    1. BaseNIntegerToBaseTenInteger
     '''
 
-    
+
     IndexOfE = EFormat.index('e')
     Radix = EFormat[:IndexOfE]
     Sign = EFormat[(IndexOfE + 1)]

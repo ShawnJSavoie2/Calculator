@@ -4,14 +4,14 @@
 
 def GetPower(Root, Exponent):
 
-    
+
     '''
-    Parameter requirements:
+    Parameters:
     Root: must be a literal integer or float.
     Exponent: must be a literal integer.
     '''
 
-    
+
     Power = Root
     for Times in range(Exponent - 1):
         Power *= Root

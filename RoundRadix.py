@@ -6,13 +6,14 @@ def RoundRadix(Radix, Base, Place):
 
 
     '''
-    Function requirements:
-    Programmer's module/s:
-    1. BaseNIntegerToBaseTenInteger
-    Parameter requirements:
+    Parameters:
     Radix: must be a string radix that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
     Place: must be a string integer that's in a base equal to the Base.
+
+    Modules:
+    Programmer's:
+    1. BaseNIntegerToBaseTenInteger
     '''
 
 

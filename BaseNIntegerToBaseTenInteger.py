@@ -6,9 +6,8 @@ def BaseNIntegerToBaseTenInteger(Integer, Base):
 
 
     '''
-    Parameter requirements:
-    Integer: must be a string integer that's in a base between and including
-    2 and 16.
+    Parameters:
+    Integer: must be a string integer that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 

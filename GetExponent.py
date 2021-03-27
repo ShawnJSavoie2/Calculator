@@ -6,7 +6,7 @@ def GetExponent(Root, Power):
 
 
     '''
-    Parameter requirements:
+    Parameters:
     Power: must be a literal integer or float.
     Root: must be a literal integer or float.
     '''

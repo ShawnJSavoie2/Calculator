@@ -5,10 +5,16 @@
 
 def ParseExpression(Expression, Fraction, Base):
 
-    
+
     '''
-    Function requirements:
-    Programmer's module/s:
+    Parameters:
+    Expression: must be a string expression containing only elements from DigitsPointBar,
+    SeperatorsAndSpace and OperatorsAndParentheses.
+    Fraction: must be a string term: Radix or Common.
+    Base: must be a string integer that's one number that's between and including 2 and 16.
+
+    Modules:
+    Programmer's:
     1. Radix
     2. Common
     3. CommonToRadix
@@ -17,14 +23,9 @@ def ParseExpression(Expression, Fraction, Base):
     3.2.1 BaseTenIntegerToBaseNInteger
     3.2.2 EFormatToRadix
     4. BaseNRadixToBaseTenRadix
-    Parameter requirements:
-    Expression: must be a string expression containing only elements from DigitsPointBar,
-    SeperatorsAndSpace and OperatorsAndParentheses.
-    Fraction: must be a string term: Radix or Common.
-    Base: must be a string integer that's one number that's between and including 2 and 16.
     '''
 
-    
+
     DigitsPointBar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
                       '.', ':', '|']
     SeparatorsAndSpace = [',', '_', ' ']
@@ -53,7 +54,7 @@ def ParseExpression(Expression, Fraction, Base):
         else:
             Number = f'{Number}{Element[1]}'
     # In case for loop ends before adding.
-    if Number != '': 
+    if Number != '':
         ExpressionList.append(Number)
     if Fraction == 'Rad':
         WorkingExpressionList = []
