@@ -25,6 +25,16 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
 
     Radix = I.CommonToRadix(Common, Base)
+    WorkingRootDenominator = ''
+    for Element in RootDenominator:
+        if Element != ',':
+            WorkingRootDenominator = f'{WorkingRootDenominator}{Element}'
+    RootDenominator = WorkingRootDenominator
+    WorkingPowerDenominator = ''
+    for Element in PowerDenominator:
+        if Element != ',':
+            WorkingPowerDenominator = f'{WorkingPowerDenominator}{Element}'
+    PowerDenominator = WorkingPowerDenominator
     if Base != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, Base)
         RootDenominator = I.BaseNIntegerToBaseTenInteger(RootDenominator, Base)

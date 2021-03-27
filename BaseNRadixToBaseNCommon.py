@@ -28,7 +28,7 @@ def BaseNRadixToBaseNCommon(Radix, FromBase, ToBase):
     Radix = I.Radix(Radix)
     Separators = [',', '_']
     Number = ''
-    for Element in Common:
+    for Element in Radix:
         if Element in Separators:
             continue
         else:
