@@ -1131,6 +1131,12 @@ class Calculator:
             for Element in self.MethodButtonList:
                 if Element['text'] != 'R -> R':
                     Element.configure(state = 'disabled')
+            UsedDigits = self.Digits[:10]
+            for Element in self.NumberButtonList:
+                if Element['text'] in UsedDigits:
+                    Element.configure(state = 'normal')
+                else:
+                    Element.configure(state = 'disabled')
             for Element in self.FractionButtonList:
                 Element.configure(state = 'disabled')
             self.StoreAndClear()
@@ -1176,6 +1182,12 @@ class Calculator:
             self.Mode = 'ComToRad'
             for Element in self.MethodButtonList:
                 if Element['text'] != 'C -> R':
+                    Element.configure(state = 'disabled')
+            UsedDigits = self.Digits[:10]
+            for Element in self.NumberButtonList:
+                if Element['text'] in UsedDigits:
+                    Element.configure(state = 'normal')
+                else:
                     Element.configure(state = 'disabled')
             for Element in self.FractionButtonList:
                 Element.configure(state = 'disabled')
@@ -1227,6 +1239,12 @@ class Calculator:
             for Element in self.MethodButtonList:
                 if Element['text'] != 'R -> C':
                     Element.configure(state = 'disabled')
+            UsedDigits = self.Digits[:10]
+            for Element in self.NumberButtonList:
+                if Element['text'] in UsedDigits:
+                    Element.configure(state = 'normal')
+                else:
+                    Element.configure(state = 'disabled')
             for Element in self.FractionButtonList:
                 Element.configure(state = 'disabled')
             self.StoreAndClear()
@@ -1275,6 +1293,12 @@ class Calculator:
             self.Mode = 'ComToCom'
             for Element in self.MethodButtonList:
                 if Element['text'] != 'C -> C':
+                    Element.configure(state = 'disabled')
+            UsedDigits = self.Digits[:10]
+            for Element in self.NumberButtonList:
+                if Element['text'] in UsedDigits:
+                    Element.configure(state = 'normal')
+                else:
                     Element.configure(state = 'disabled')
             for Element in self.FractionButtonList:
                 Element.configure(state = 'disabled')
