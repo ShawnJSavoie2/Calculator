@@ -21,7 +21,7 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
 
     IndexOfPoint = Radix.index('.')
     Whole = Radix[:IndexOfPoint]
-    Fraction = Radix[IndexOfPoint:]
+    Fraction = Radix[(IndexOfPoint + 1):]
     Whole = int(Whole)
     Base = int(Base)
     if Whole != 0:
@@ -76,38 +76,39 @@ def BaseTenRadixToBaseNRadix(Radix, Base):
             else:
                 Whole = f'{Whole}{Digit}'
     #Fraction part
-    RootDenominator = int(Base)
-    PowerDenominator = int(Base) ** 16
-    Exponent = I.GetExponent(RootDenominator, PowerDenominator)
-    Denominators = [RootDenominator]
-    WorkingPowerDenominator = RootDenominator
-    for Times in range(Exponent - 1):
-        WorkingPowerDenominator *= RootDenominator
-        Denominators.append(WorkingPowerDenominator)
-    Denominator = PowerDenominator
-    Numerator = float(Fraction) * Denominator
-    if Numerator % 1 == 0:
-        if Numerator in Denominators:
-            Denominator /= Numerator
-            Numerator /= Numerator
-    else:
-        Numerator = round(Numerator)
-        if Numerator in Denominators:
-            Denominator /= Numerator
-            Numerator /= Numerator
-    Numerator = int(Numerator)
-    Denominator = int(Denominator)
-    Common = f'0:{Numerator}|{Denominator}'
-    Common = I.SimplifyRoundedCommon(Common, '10', Base)
-    IndexOfColon = Common.index(':')
-    IndexOfBar = Common.index('|')
-    Numerator = Common[(IndexOfColon + 1):IndexOfBar]
-    Denominator = Common[(IndexOfBar + 1):]
-    Numerator = I.BaseTenIntegerToBaseNInteger(Numerator, Base)
-    Denominator = I.BaseTenIntegerToBaseNInteger(Denominator, Base)
-    Fraction = Numerator
-    for Times in range((len(Denominator) - 1 - len(Numerator))):
-        Fraction = f'0{Fraction}'
+    if Fraction != '0':
+        RootDenominator = int(Base)
+        PowerDenominator = int(Base) ** 16
+        Exponent = I.GetExponent(RootDenominator, PowerDenominator)
+        Denominators = [RootDenominator]
+        WorkingPowerDenominator = RootDenominator
+        for Times in range(Exponent - 1):
+            WorkingPowerDenominator *= RootDenominator
+            Denominators.append(WorkingPowerDenominator)
+        Denominator = PowerDenominator
+        Numerator = float(f'.{Fraction}') * Denominator
+        if Numerator % 1 == 0:
+            if Numerator in Denominators:
+                Denominator /= Numerator
+                Numerator /= Numerator
+        else:
+            Numerator = round(Numerator)
+            if Numerator in Denominators:
+                Denominator /= Numerator
+                Numerator /= Numerator
+        Numerator = int(Numerator)
+        Denominator = int(Denominator)
+        Common = f'0:{Numerator}|{Denominator}'
+        Common = I.SimplifyRoundedCommon(Common, '10', Base)
+        IndexOfColon = Common.index(':')
+        IndexOfBar = Common.index('|')
+        Numerator = Common[(IndexOfColon + 1):IndexOfBar]
+        Denominator = Common[(IndexOfBar + 1):]
+        Numerator = I.BaseTenIntegerToBaseNInteger(Numerator, Base)
+        Denominator = I.BaseTenIntegerToBaseNInteger(Denominator, Base)
+        Fraction = Numerator
+        for Times in range((len(Denominator) - 1 - len(Numerator))):
+            Fraction = f'0{Fraction}'
     Radix = f'{Whole}.{Fraction}'
     return Radix
 
