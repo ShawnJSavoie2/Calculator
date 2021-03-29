@@ -6,7 +6,7 @@ def FormatNumber(Number):
 
 
     '''
-    Parameter requirements:
+    Parameters:
     Number: must be a string number.
     '''
 

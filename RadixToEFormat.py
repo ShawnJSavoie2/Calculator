@@ -6,13 +6,14 @@ def RadixToEFormat(Radix, Base):
 
 
     '''
-    Function requirements:
-    Programmer's module/s:
-    1. BaseTenIntegerToBaseNInteger
-    2. FormatNumber
-    Parameter requirements:
+    Parameters:
     Radix: must be a string Radix that's in a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
+    1. BaseTenIntegerToBaseNInteger
+    2. FormatNumber
     '''
 
 

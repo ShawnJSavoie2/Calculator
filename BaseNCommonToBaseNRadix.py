@@ -6,8 +6,13 @@ def BaseNCommonToBaseNRadix(Common, FromBase, ToBase):
 
 
     '''
-    Function requirements:
-    Programmer's modules:
+    Parameters:
+    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
+    FromBase: must be a string integer that's one number between and including 2 and 16.
+    ToBase: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
     1. Common
     2. CommonToRadix
     2.1. BaseNIntegerToBaseTenInteger
@@ -16,22 +21,18 @@ def BaseNCommonToBaseNRadix(Common, FromBase, ToBase):
     2.2.2. EFormatToRadix
     3. BaseNRadixToBaseTenRadix
     4. FormatNumber
-    Parameter requirements:
-    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
-    FromBase: must be a string integer that's one number between and including 2 and 16.
-    ToBase: must be a string integer that's one number between and including 2 and 16.
     '''
 
 
     Common = I.Common(Common)
     Separators = [',', '_']
-    Number = ''
+    WorkingCommon = ''
     for Element in Common:
         if Element in Separators:
             continue
         else:
-            Number = f'{Number}{Element}'
-    Common = Number
+            WorkingCommon = f'{WorkingCommon}{Element}'
+    Common = WorkingCommon
     Radix = I.CommonToRadix(Common, FromBase)
     if FromBase != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, FromBase)

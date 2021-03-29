@@ -6,14 +6,14 @@ def SimplifyCommon(Common, Base):
 
 
     '''
-    Function requirements:
-    Programmer's module/s:
-    1. BaseNIntegerToBaseTenInteger
-    2. BaseTenIntegerToBaseNInteger
-    Parameter requirements:
+    Parameters:
     Common: must be a string common ('n:n|n') with a base between and including 2 and 16.
     Base: must be a string integer that's one number between and including 2 and 16.
-    Divisor: must be a string integer.
+
+    Modules:
+    Programmer's:
+    1. BaseNIntegerToBaseTenInteger
+    2. BaseTenIntegerToBaseNInteger
     '''
 
 

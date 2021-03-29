@@ -6,8 +6,14 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
 
 
     '''
-    Function requirements:
-    Programmer's module/s:
+    Parameters:
+    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
+    Base: must be a string integer that's one number between and including 2 and 16.
+    RootDenominator: must be a string integer.
+    PowerDenominator: must be a string integer.
+
+    Modules:
+    Programmer's:
     1. CommonToRadix
     1.1. BaseNIntegerToBaseTenInteger
     1.2. BaseTenRadixToBaseNRadix
@@ -16,11 +22,6 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
     2. BaseNRadixToBaseTenRadix
     3. GetExponent
     4. SimplifyRoundedCommon
-    Parameter requirements:
-    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
-    Base: must be a string integer that's one number between and including 2 and 16.
-    PowerDenominator: must be a string integer.
-    RootDenominator: must be a string integer.
     '''
 
 
@@ -69,7 +70,7 @@ def RoundCommon(Common, Base, RootDenominator, PowerDenominator):
         Numerator = int(Numerator)
         Denominator = int(Denominator)
     Common = f'{Whole}:{Numerator}|{Denominator}'
-    Common = I.SimplifyRoundedCommon(Common, Base, RootDenominator)
+    Common = I.SimplifyRoundedCommon(Common, Base, str(RootDenominator))
     return Common
 
 

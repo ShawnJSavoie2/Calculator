@@ -6,14 +6,15 @@ def GetRoot(Power, Exponent):
 
 
     '''
-    Function requirements:
-    Programmer's modules:
+    Parameters:
+    Power: must be a literal float.
+    Exponent: must be a literal integer.
+
+    Modules:
+    Programmer's:
     1. RoundUpOrTruncate
     1.1. EFormatToRadix
     1.1.1. BaseNIntegerToBaseTenInteger
-    Parameter requirements:
-    Power: must be a literal float.
-    Exponent: must be a literal integer.
     '''
 
 

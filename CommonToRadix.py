@@ -6,15 +6,16 @@ def CommonToRadix(Common, Base):
 
 
     '''
-    Function requirements:
-    Programmer's modules:
+    Parameters:
+    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
+    Base: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
     1. BaseNIntegerToBaseTenInteger,
     2. BaseTenRadixToBaseNRadix
     2.1. BaseTenIntegerToBaseNInteger
     2.2. EFormatToRadix
-    Parameter requirements:
-    Common: must be a string common ('n:n|n') that's in a base between and including 2 and 16.
-    Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
 

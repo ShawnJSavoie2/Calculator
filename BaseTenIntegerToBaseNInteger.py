@@ -4,14 +4,14 @@
 
 def BaseTenIntegerToBaseNInteger(Integer, Base):
 
-    
+
     '''
-    Parameter requirements:
+    Parameters:
     Integer: must be a string integer that's in base 10.
     Base: must be a string integer that's one number between and including 2 and 16.
     '''
 
-    
+
     Integer = int(Integer)
     Base = int(Base)
     Exponent = 1
@@ -26,7 +26,7 @@ def BaseTenIntegerToBaseNInteger(Integer, Base):
     Digit = int(Integer // Magnitude)
     Remainder = Integer - (Digit * Magnitude)
     Digits.append(Digit)
-    if Exponent != 0: 
+    if Exponent != 0:
         Magnitude = Magnitude / Base
         Exponent = Exponent - 1
         if Remainder >= Base:
@@ -46,7 +46,7 @@ def BaseTenIntegerToBaseNInteger(Integer, Base):
                     GoodToGo = 'No'
                 else:
                     GoodToGo = 'Yes'
-        if Exponent != 0: 
+        if Exponent != 0:
             for Count in range(Exponent):
                 Digits.append(0)
         Digits.append(int(Remainder))

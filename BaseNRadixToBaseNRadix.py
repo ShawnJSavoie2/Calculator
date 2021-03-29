@@ -6,8 +6,13 @@ def BaseNRadixToBaseNRadix(Radix, FromBase, ToBase):
 
 
     '''
-    Function requirements:
-    Programmer's modules:
+    Parameters:
+    Radix: must be a string radix that's in a base between and including 2 and 16.
+    FromBase: must be a string integer that's one number between and including 2 and 16.
+    ToBase: must be a string integer that's one number between and including 2 and 16.
+
+    Modules:
+    Programmer's:
     1. Radix
     2. BaseNRadixToBaseTenRadix
     3. BaseTenRadixToBaseNRadix
@@ -15,22 +20,18 @@ def BaseNRadixToBaseNRadix(Radix, FromBase, ToBase):
     3.2. EFormatToRadix
     3.2.1. BaseNIntegerToBaseTenInteger
     4. FormatNumber
-    Parameter requirements:
-    Radix: must be a string radix that's in a base between and including 2 and 16.
-    FromBase: must be a string integer that's one number between and including 2 and 16.
-    ToBase: must be a string integer that's one number between and including 2 and 16.
     '''
 
 
     Radix = I.Radix(Radix)
     Separators = [',', '_']
-    Number = ''
+    WorkingRadix = ''
     for Element in Radix:
         if Element in Separators:
             continue
         else:
-            Number = f'{Number}{Element}'
-    Radix = Number
+            WorkingRadix = f'{WorkingRadix}{Element}'
+    Radix = WorkingRadix
     if FromBase != '10':
         Radix = I.BaseNRadixToBaseTenRadix(Radix, FromBase)
     if ToBase != '10':
